@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="Loan" table="t_loan">
+		<id name="loan_id" length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="loanname" length="20"></property>
+		<property name="loan_datetime"></property>
+		<property name="loan_year"></property>
+		<property name="interest_rates"></property>
+		<property name="loan_money"></property>
+		<property name="loan_source"></property>
+		<property name="loan_desc" length="150"></property>
+	    <property name="loan_createtime"></property>
+		<many-to-one name="user" column="loan_user_id" class="User" cascade="save-update"></many-to-one>
+	</class>
+	<query name="loan.delete">
+		DELETE FROM Loan WHERE loan_id=?
+	</query>
+</hibernate-mapping>

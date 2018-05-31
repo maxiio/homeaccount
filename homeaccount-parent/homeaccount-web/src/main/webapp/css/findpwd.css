@@ -1,0 +1,9 @@
+body{
+	background-image: url(../img/bg.jpg);
+}
+#myForm{
+	margin-top: 10px;
+	border: 1px solid red;
+	background-color: #fff;
+}
+

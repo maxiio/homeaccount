@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="Manager" table="t_manager">
+		<id name="manager_id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="manager_name"></property>
+		<property name="manager_pwd"></property>
+		<property name="manager_number"></property>
+		<property name="manager_sex"></property>
+		<property name="birthday"></property>
+		<property name="manager_face"></property>
+		<property name="manager_idcard"></property>
+		<property name="manager_address"></property>
+		<set name="roles" table="manager_role">
+			<key column="manager_id"></key>
+			<many-to-many class="Role" column="role_id"/>
+		</set>
+	</class>
+	<query name="manager.initpwd">
+		UPDATE Manager SET manager_pwd=? WHERE manager_id=?
+	</query>
+</hibernate-mapping>

@@ -1,0 +1,16 @@
+[
+         {"id":"111","pId":"11","name":"用户管理","page":"page_admin_user_list.action"},
+	     {"id":"113","pId":"11","name":"账单使用情况分析"},
+	        {"id":"1131","pId":"113","name":"支出账单使用情况","page":"/topic/waitconfirm.jsp"},
+	        {"id":"1132","pId":"113","name":"收入账单使用情况","page":"/topic/waitconfirm.jsp"},
+	        {"id":"1132","pId":"113","name":"投资理财使用情况","page":"/topic/waitconfirm.jsp"},
+	        {"id":"1132","pId":"113","name":"借款还贷使用请款","page":"/topic/waitconfirm.jsp"},
+         {"id":"114","pId":"11","name":"交流大区管理"},
+            {"id":"1141","pId":"114","name":"交流大区列表","page":"page_admin_region_list.action"},
+            {"id":"1142","pId":"114","name":"添加交流大区","page":"page_admin_region_add.action"},
+         {"id":"112","pId":"11","name":"主题帖管理"},
+            {"id":"1121","pId":"112","name":"主题帖列表","page":"page_admin_topic_list.action"},
+            {"id":"1122","pId":"112","name":"待审核","page":"page_admin_topic_waitconfirm.action"},
+         {"id":"115","pId":"11","name":"回复管理"},
+            {"id":"1152","pId":"115","name":"待审核","page":"page_admin_reply_confirm.action"}
+]

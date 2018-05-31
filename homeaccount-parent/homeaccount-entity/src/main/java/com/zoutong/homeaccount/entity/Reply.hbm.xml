@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="Reply" table="t_reply">
+		<id name="reply_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="reply_content" type="java.lang.String">
+			<column name="reply_content" sql-type="text"  length="1000"></column>
+		</property>
+		<property name="reply_datetime"></property>
+		<property name="is_top"></property>
+		<property name="zan"></property>
+		<property name="bad"></property>
+		<property name="status"></property>
+		<many-to-one name="user" column="reply_user_id" class="User" lazy="false" cascade="save-update"></many-to-one>
+		<many-to-one name="topic" column="reply_topic_id" class="Topic" lazy="false" cascade="save-update"></many-to-one>
+	</class>
+	<query name="reply.doread">
+		UPDATE Reply SET status=1 WHERE reply_id=?
+	</query>
+	<query name="reply.delete">
+		DELETE FROM Reply WHERE reply_id=?
+	</query>
+	<query name="reply.zan">
+		UPDATE Reply SET zan=zan+1 WHERE reply_id=?
+	</query>
+	<query name="reply.bad">
+		UPDATE Reply SET bad=bad+1 WHERE reply_id=?
+	</query>
+	<query name="reply.confirm">
+		UPDATE Reply SET bad=0 WHERE reply_id=?
+	</query>
+</hibernate-mapping>

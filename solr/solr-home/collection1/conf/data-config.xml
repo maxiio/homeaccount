@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<dataConfig>   
+<dataSource type="JdbcDataSource"   
+		  driver="com.mysql.jdbc.Driver"   
+		  url="jdbc:mysql://localhost:3306/account"   
+		  user="root"   
+		  password="123456"/>   
+<document>   
+	<entity name="topic" query="SELECT topic_id,topic_title,topic_content,topic_datetime,is_top,is_good,is_end,look_count,topic_zan,topic_bad,del FROM t_topic where del='0'">
+		 <field column="topic_id" name="id"/> 
+		 <field column="topic_title" name="topic_title"/> 
+		 <field column="topic_content" name="topic_content"/> 
+		 <field column="topic_datetime" name="topic_datetime"/> 
+		 <field column="is_top" name="is_top"/> 
+		 <field column="is_good" name="is_good"/> 
+		 <field column="is_end" name="is_end"/> 
+		 <field column="look_count" name="look_count"/> 
+		 <field column="topic_zan" name="topic_zan"/> 
+		 <field column="topic_bad" name="topic_bad"/> 
+		 <field column="del" name="del"/> 
+	</entity>   
+</document>   
+</dataConfig>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="Invest" table="t_invest">
+		<id name="invest_id" length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="investname" length="20"></property>
+		<property name="invest_datetime"></property>
+		<property name="invest_year"></property>
+		<property name="invest_target"></property>
+		<property name="invest_createtime"></property>
+		<property name="interest_rates"></property>
+		<property name="invest_money"></property>
+		<property name="invest_desc" length="150"></property>
+		<many-to-one name="user" column="invest_user_id" class="User" cascade="save-update"></many-to-one>
+	</class>
+	<query name="invest.delete">
+		DELETE FROM Invest WHERE invest_id=?
+	</query>
+</hibernate-mapping>

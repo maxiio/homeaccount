@@ -1,0 +1,12 @@
+{
+	"total":100,
+	"rows":[
+	{"region_id":1,"region_name":"系统问题区","region_desc":"这是闲聊区"},
+	{"region_id":2,"region_name":"支出账单区","region_desc":"这是闲聊区"},
+	{"region_id":3,"region_name":"收入账单区","region_desc":"这是闲聊区"},
+	{"region_id":4,"region_name":"投资理财区","region_desc":"这是闲聊区"},
+	{"region_id":5,"region_name":"借款还贷区","region_desc":"这是闲聊区"},
+	{"region_id":6,"region_name":"闲聊区","region_desc":"这是闲聊区"}
+	
+	]
+}

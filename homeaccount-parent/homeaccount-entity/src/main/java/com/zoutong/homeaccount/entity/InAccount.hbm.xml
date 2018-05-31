@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="InAccount" table="t_inaccount">
+		<id name="inaccount_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="inaccount_datetime"></property>
+		<property name="inaccount_money"></property>
+		<property name="inaccount_createtime"></property>
+		<property name="inaccount_desc" length="200"></property>
+		<many-to-one name="user" column="in_user_id" class="User" lazy="false" fetch="join"></many-to-one>
+		<many-to-one name="inAccountType" column="in_type_id" class="InAccountType" lazy="false" fetch="join" cascade="save-update"></many-to-one>
+	</class>
+	  <query name="inaccount.delete">
+    	 DELETE FROM InAccount WHERE inaccount_id = ?
+     </query>
+</hibernate-mapping>

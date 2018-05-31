@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	<!-- 加载属性文件 -->
+	<context:property-placeholder location="classpath:db.properties"/>	
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClass}"/>
+		<property name="url" value="${jdbc.jdbcUrl}"/>
+		<property name="username" value="${jdbc.user}"/>
+		<property name="password" value="${jdbc.password}"/>
+		 <!-- 配置初始化大小、最小、最大 -->
+	    <property name="initialSize" value="10" />
+	    <property name="minIdle" value="10" />
+	    <property name="maxActive" value="20" />
+	    <!-- 配置获取连接等待超时的时间 -->
+	    <property name="maxWait" value="60000" />
+	    <!-- 配置监控统计拦截的filters -->
+	    <property name="filters" value="stat" />
+	</bean>
+	
+	<!-- 配置LocalSessionFactoryBean，spring提供的用于整合hibernate的工厂bean -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<!-- 注入hibernate相关的属性配置 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<!-- 注入hibernate的映射文件 -->
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:com/zoutong/homeaccount/entity/*.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
+	<!-- 配置solrj -->
+	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
+		<constructor-arg index="0" value="http://localhost:8081/solr/collection1"/>
+	</bean>
+	
+	
+	
+	<!-- 配置shiroFilter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		 <property name="securityManager" ref="securityManager"></property>
+		<!--注入相关页面的url-->
+		<property name="loginUrl" value="/login.jsp"></property>
+		<property name="successUrl" value="/admin/index.jsp"></property>
+		<property name="unauthorizedUrl" value="/unauthorized.jsp"></property>
+		<!-- 注入URL拦截规则 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/fonts/** = anon
+				/jquery/** = anon
+				/json/** = anon
+				/img/** = anon
+				/img/** = anon
+				/admin/** = anon
+				/css/** = anon
+				/js/** = anon 
+				/images/** = anon
+				/findpwd.jsp* = anon
+				/call.html = anon
+				/500.jsp = anon
+				/404.jsp = anon
+				/okregister.jsp = anon
+				/register.jsp* = anon
+				/admin/** = anon
+				/index.jsp* = anon
+				/validatecode.jsp* = anon
+				/login.jsp = anon
+				/druid/** = anon
+				/unauthorized.jsp = anon
+				/ManagerAction_login.action = anon
+				/UserAction_regist.action = anon
+				/UserAction_login.action = anon
+				/UserAction_findpwd.action = anon
+				/UserAction_updatepwd.action = anon
+				/UserAction_checkemail.action = anon
+				/UserAction_checkUserName.action = anon
+				/UserAction_check.action = anon
+				/page_admin_manager_list.action =  perms["manager-list"]
+				/** = authc
+			</value>
+		</property>
+	</bean>
+	<!-- 注册安全管理器对象 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		 <property name="realms" >
+		 	<list>
+		 		<ref bean="myRealm"/>
+		 		<ref bean="myRealm2"/>
+		 	</list>
+		 </property> 
+		<!-- 注入缓存管理器 -->
+		<property name="cacheManager" ref="cacheManager"></property>
+	</bean>
+	<!-- 注册realm -->
+	 <bean id="myRealm" class="com.zoutong.homeaccount.realm.MyRealm"></bean> 
+	  <bean id="myRealm2" class="com.zoutong.homeaccount.realm.MyRealm2"></bean> 
+	 
+	 <!-- 开启shiro框架注解支持 -->
+	<bean id="defaultAdvisorAutoProxyCreator" 
+		class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+		<!-- 必须使用cglib方式为Action对象创建代理对象 -->
+		<property name="proxyTargetClass" value="true"/>
+	</bean>
+	<!-- 配置shiro框架提供的切面类，用于创建代理对象 -->
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"/>
+	
+	<!-- 注册缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<!-- 注入配置文件 -->
+		<property name="cacheManagerConfigFile" value="classpath:ehcache.xml"></property>
+	</bean>
+	
+	
+	<!-- 组件扫描 -->
+	<context:component-scan base-package="com.zoutong.homeaccount"/>
+	
+	<!-- 支持spring注解 -->
+	<context:annotation-config/>
+	<tx:annotation-driven/>
+</beans>

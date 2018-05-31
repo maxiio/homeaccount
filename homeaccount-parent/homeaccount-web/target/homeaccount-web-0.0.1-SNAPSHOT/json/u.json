@@ -1,0 +1,32 @@
+{
+	"total":15,
+	"rows":[
+	{
+		"manager_id":1,"manager_name":"zoutong1","manager_role_id":"超级管理员",
+		"manager_idcard":"110","manager_sex":"男","manager_number":"17798531336",
+		"manager_address":"南京市浦口区","manager_state":"正常使用","manager_level":"普通用户"
+		
+	},
+	{
+		"manager_id":2,"manager_name":"zoutong2","manager_role_id":"超级管理员",
+		"manager_idcard":"110","manager_sex":"男","manager_number":"177985313367777777777777777777777",
+		"manager_address":"南京市浦口区","manager_state":"正常使用","manager_level":"普通用户"
+	},
+	
+	{
+		"manager_id":3,"manager_name":"zoutong3","manager_role_id":"超级管理员",
+		"manager_idcard":"110","manager_sex":"男","manager_number":"17798531336",
+		"manager_address":"南京市浦口区","manager_state":"正常使用","manager_level":"普通用户"
+	},
+	{
+		"manager_id":4,"manager_name":"zoutong4","manager_role_id":"超级管理员",
+		"manager_idcard":"110","manager_sex":"男","manager_number":"17798531336",
+		"manager_address":"南京市浦口区","manager_state":"正常使用","manager_level":"普通用户"
+	},
+	{
+		"manager_id":5,"manager_name":"zoutong5","manager_role_id":"超级管理员",
+		"manager_idcard":"110","manager_sex":"男","manager_number":"17798531336",
+		"manager_address":"南京市浦口区","manager_state":"正常使用","manager_level":"普通用户"
+	}
+	]
+}

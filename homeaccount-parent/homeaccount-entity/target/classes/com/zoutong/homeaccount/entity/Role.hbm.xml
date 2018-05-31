@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="Role" table="t_role">
+		<id name="role_id">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="role_name" length="20"></property>
+		<property name="role_code"></property>
+		<property name="role_desc" length="150"></property>
+		<set name="managers" inverse="true" table="manager_role" >
+			<key column="role_id"></key>
+			<many-to-many class="Manager" column="manager_id"></many-to-many>
+		</set>
+		<set name="functions" table="role_fun">
+			<key column="role_id"></key>
+			<many-to-many class="Function" column="fun_id"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

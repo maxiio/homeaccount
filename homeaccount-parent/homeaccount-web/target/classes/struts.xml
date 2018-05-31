@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.action.extension" value="action" />  
+	<package name="homeaccount" extends="struts-default" namespace="/">
+	 <interceptors>
+			<interceptor name="loginInterceptor" class="com.zoutong.homeaccount.web.interceptor.LoginInterceptor"></interceptor>
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="loginInterceptor">
+					<param name="excludeMethods">login,regist,checkUserName,findpwd,updatepwd,checkemail,check</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myStack"/>
+		<!-- 定义全局结果集 -->
+		 <global-results>
+			<result name="toLogin" type="redirect" >/login.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="authorized">/unauthorized.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+		    <exception-mapping result="authorized" exception="org.apache.shiro.authz.UnauthorizedException"></exception-mapping>
+			<!-- <exception-mapping result="error" exception="java.lang.RuntimeException"></exception-mapping> -->
+		</global-exception-mappings> 
+		<action name="page_*_*_*">
+			<result type="dispatcher">/WEB-INF/{1}/{2}/{3}.jsp</result>
+		</action>
+		<!-- 管理员Action -->
+		<action name="ManagerAction_*" class="managerAction" method="{1}">
+		   <result name="home" type="redirect">/admin/index.jsp</result>
+		   <result name="logout" type="redirect">/admin/login.jsp</result>
+		   <result name="toLogin">/admin/login.jsp</result>
+		   <result name="list">/WEB-INF/admin/manager/list.jsp</result>
+		   <result name="edit">/WEB-INF/admin/manager/edit.jsp</result>
+		</action>
+		<!-- 用户Action -->
+		<action name="UserAction_*"  method="{1}" class="userAction">
+			<result name="tofindpwd">/findpwd.jsp</result>
+			<result name="findpwd" type="redirect">/findpwd.jsp</result>
+			<result name="welcome" type="redirect">/index.jsp</result>
+			<result name="toLogin" >/login.jsp</result>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="callmanager" type="redirect">/call.html</result>
+			<result name="toOk" type="redirect">/okregister.jsp</result>
+			<result name="toUserDesc">/WEB-INF/user/common/userdesc.jsp</result>
+			<result name="updatepwd">/WEB-INF/user/common/updatepwd.jsp</result>
+			<result name="toRegister" type="redirect">/register.jsp</result>
+			
+			<result name="userlist">/WEB-INF/admin/user/list.jsp</result>
+		</action>
+		<!--首页Action -->
+		<action name="MainAction_*" method="{1}" class="mainAction">
+			<result name="index">/WEB-INF/user/common/main.jsp</result>
+		</action>
+		<!-- 收入账单Action -->
+		<action name="InAccountAction_*" method="{1}" class="inAccountAction">
+			 <result name="toShow"  type="redirectAction" >
+	                <param name="actionName">InAccountAction_list.action</param>
+	                <param name="namespace">/</param>
+	        </result>
+			<result name="toList">/WEB-INF/user/inaccount/list.jsp</result>
+			<result name="total">/WEB-INF/admin/inaccount/baobiao.jsp</result>
+		</action>
+		<!--收入类型Action -->
+		<action name="InTypeAction_*" method="{1}" class="inTypeAction">
+		    <result name="toShow"  type="redirectAction" >
+	                <param name="actionName">InTypeAction_list.action</param>
+	                <param name="namespace">/</param>
+	        </result>
+			<result name="list">/WEB-INF/user/inaccounttype/list.jsp</result>
+		</action>
+		<!-- 支出账单Action -->
+		<action name="OutAccountAction_*" method="{1}" class="outAccountAction">
+			 <result name="toShow"  type="redirectAction" >
+	                <param name="actionName">OutAccountAction_list.action</param>
+	                <param name="namespace">/</param>
+	        </result>
+			<result name="toList">/WEB-INF/user/outaccount/list.jsp</result>
+			<result name="total">/WEB-INF/admin/outaccount/baobiao.jsp</result>
+		</action>
+		<!-- 支出类型Action -->
+		<action name="OutAccountTypeAction_*" method="{1}" class="outAccountTypeAction">
+		    <result name="toShow"  type="redirectAction" >
+	                <param name="actionName">OutAccountTypeAction_list.action</param>
+	                <param name="namespace">/</param>
+	        </result>
+			<result name="list">/WEB-INF/user/outaccounttype/list.jsp</result>
+		</action>
+		<!-- 借款Action -->
+		<action name="LoanAction_*" method="{1}" class="loanAction">
+			 <result name="toShow"  type="redirectAction" >
+	                <param name="actionName">LoanAction_list.action</param>
+	                <param name="namespace">/</param>
+	        </result>
+			<result name="list">/WEB-INF/user/loan/list.jsp</result>
+			<result name="total">/WEB-INF/admin/loan/baobiao.jsp</result>
+		</action>
+		<!-- 投资Action -->
+		<action name="InvestAction_*" method="{1}" class="investAction">
+			 <result name="toShow"  type="redirectAction" >
+	                <param name="actionName">InvestAction_list.action</param>
+	                <param name="namespace">/</param>
+	        </result>
+	        <result name="list">/WEB-INF/user/invest/list.jsp</result>
+	        <result name="total">/WEB-INF/admin/invest/baobiao.jsp</result>
+		</action>
+		<!-- 交流大区Action -->
+		<action name="RegionAction_*" method="{1}" class="regionAction">
+	        <result name="list">/WEB-INF/user/chat/region.jsp</result>
+	        <result name="show">/WEB-INF/admin/region/list.jsp</result>
+		</action>
+		<!--主题帖Action -->
+		<action name="TopicAction_*" method="{1}" class="topicAction">
+	        <result name="list">/WEB-INF/user/chat/topics.jsp</result>
+	        <result name="show">/WEB-INF/user/chat/content.jsp</result>
+	         <result name="tolist"  type="redirectAction" >
+	                <param name="actionName">RegionAction_list.action</param>
+	                <param name="namespace">/</param>
+	        </result>
+	        <result name="mylist">/WEB-INF/user/chat/message.jsp</result>
+	        <result name="toshow" type="redirectAction">
+	        	<param name="actionName">TopicAction_findByUser.action</param>
+	        	<param name="namespace">/</param>
+	        </result>
+	        <result name="toedit">/WEB-INF/user/chat/edit.jsp</result>
+	        <result name="adminshow">/WEB-INF/admin/topic/list.jsp</result>
+	        <result name="adminconfirm">/WEB-INF/admin/topic/waitconfirm.jsp</result>
+		</action>
+		<!--回复Action -->
+		<action name="ReplyAction_*" method="{1}" class="replyAction">
+	       	<result name="toshow" type="redirectAction">
+	       		  <param name="actionName">TopicAction_showContent.action</param>
+	       		    <param name="topic_id">${topic_id}</param>
+	               <param name="namespace">/</param>
+	       	</result>
+	       	<result name="adminconfirm">/WEB-INF/admin/reply/confirm.jsp</result>
+		</action>
+		<!-- 图片上传 -->
+		<action name="UploadAction_*" method="{1}" class="uploadAction">
+	    </action>
+	    <!-- 权限Action -->
+	    <action name="FunctionAction_*" method="{1}" class="functionAction">
+	    	<result name="list">/WEB-INF/admin/function/list.jsp</result>
+	    	<result name="edit">/WEB-INF/admin/function/edit.jsp</result>
+	    </action>
+	     <!-- 角色Action -->
+	    <action name="RoleAction_*" method="{1}" class="roleAction">
+	    	<result name="list">/WEB-INF/admin/role/list.jsp</result>
+	    	<result name="edit">/WEB-INF/admin/role/edit.jsp</result>
+	    </action>
+	       <!-- 搜索Action -->
+	    <action name="SearchAction_*" method="{1}" class="searchAction">
+	    	<result name="list">/WEB-INF/user/search/search.jsp</result>
+	    	<result name="home">/WEB-INF/index.jsp</result>
+	    </action>
+	        <!-- 索引库维护Action -->
+	    <action name="SolrAction_*" method="{1}" class="solrAction">
+	    </action>
+	</package>
+</struts>

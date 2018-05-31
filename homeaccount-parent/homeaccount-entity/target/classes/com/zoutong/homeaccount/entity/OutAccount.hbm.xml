@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="OutAccount" table="t_outaccount">
+		<id name="outaccount_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="outaccount_datetime"></property>
+		<property name="outaccount_money"></property>
+		<property name="outaccount_desc" length="150"></property>
+		<property name="outaccount_createtime"></property>
+		<many-to-one name="user" column="out_user_id" class="User" cascade="save-update"></many-to-one>
+		<many-to-one name="outAccountType" column="out_type_id" class="OutAccountType" cascade="save-update" lazy="false"></many-to-one>
+	</class>
+	<query name="outaccount.delete">
+		 DELETE FROM OutAccount WHERE outaccount_id = ?
+	</query>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+body {
+	background-image: url(../img/bg.jpg);
+}
+
+#logo {
+	height: 50px;
+}
+
+#login {
+	border: 1px solid #E7E7E7;
+	border-radius: 5px;
+	background: #fff;
+}
+#header{
+	text-align: center;color: gray;
+}
+#btn_register{
+	color: red;font-size: 12px;font-weight: lighter;
+}
+#btn_login{
+	color: white;font-weight: bolder;font-size: 16px;
+}
+#btn_findpwd{
+	color: gray;
+}
+#btn_findpwd:hover{
+	color: red;
+}

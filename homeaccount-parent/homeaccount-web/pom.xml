@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.zoutong.homeaccount</groupId>
+    <artifactId>homeaccount-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>homeaccount-web</artifactId>
+  <packaging>war</packaging>
+  <description>子工程，存放表现层、静态文件</description>
+	<dependencies>
+		<dependency>
+	  		<groupId>com.zoutong.homeaccount</groupId>
+	  		<artifactId>homeaccount-entity</artifactId>
+	  		<version>0.0.1-SNAPSHOT</version>
+	  	</dependency>
+	  	<dependency>
+	  		<groupId>com.zoutong.homeaccount</groupId>
+	  		<artifactId>homeaccount-service</artifactId>
+	  		<version>0.0.1-SNAPSHOT</version>
+	  	</dependency>
+	  	<dependency>
+	  		<groupId>com.zoutong.homeaccount</groupId>
+	  		<artifactId>homeaccount-utils</artifactId>
+	  		<version>0.0.1-SNAPSHOT</version>
+	  	</dependency>
+	  	<dependency>
+	  		<groupId>org.apache.struts</groupId>
+	  		<artifactId>struts2-spring-plugin</artifactId>
+	  		<version>2.3.24</version>
+	  	</dependency>
+	</dependencies>
+</project>

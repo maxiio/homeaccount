@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<!--声明文档兼容模式，表示使用IE浏览器的最新模式-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!--设置视口的宽度(值为设备的理想宽度)，页面初始缩放值<理想宽度/可见宽度>-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>找回密码--手机号找回</title>
+		<!-- 引入Bootstrap核心样式文件 -->
+		<link href="../css/bootstrap.css" rel="stylesheet">
+		<link href="../css/findpwd.css" />
+		<!-- 引入jQuery核心js文件 -->
+		<script src="../js/jquery-1.11.3.min.js"></script>
+		<!-- 引入BootStrap核心js文件 -->
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/findpwd.js"></script>
+
+	</head>
+
+	<body background="../img/bg.jpg">
+		<!--container主容器-->
+		<div class="container">
+			<div class="row">
+				<div class="page-header hidden-xs">
+					<h1>家庭记账系统 <small style="color: orangered;">用户找回密码</small></h1>
+				</div>
+				<div class="page-header visible-xs-block">
+					<h4>家庭记账系统 <small style="color: orangered;">用户找回密码</small></h4>
+				</div>
+			</div>
+		</div>
+		<!--container主容器end-->
+		<!--container主容器-->
+		<div class="container">
+
+			<ol class="breadcrumb">
+				<li><a href="login.html">登录界面</a></li>
+				<li><a href="findpwd.html">找回密码</a></li>
+				<li><a href="findpwdType.html">选择找回密码类型</a></li>
+				<li>通过手机号找回密码</li>
+			</ol>
+
+			<!--row-->
+			<div class="row">
+				<!--FORM DIV-->
+				<div class="col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6" style="margin-top: 10px;border: 1px solid lightgrey;background-color: ghostwhite;" align="center">
+					<div class="row">
+						<form class="form-horizontal" action="updatepwd.html">
+							<div class="input-group">
+								<div class="col-lg-12 col-md-12 col-sm-12  hidden-xs">
+									<h3 style="color: #1B6D85">手机号找回账号</h3>
+
+								</div>
+								<div class="visible-xs-block">
+									<h4 style="color: #1B6D85">手机号找回账号</h4>
+
+								</div>
+
+							</div>
+							<div class="input-group" style="margin-top: 10px;">
+
+								<label class="control-label col-sm-4 col-md-4 col-xs-12">用&nbsp;户&nbsp;名</label>
+								<div class="col-sm-8 col-md-8 col-xs-12">
+									<input class="form-control" style="width: 200px;" id="disabledInput" type="text" value="zoutong" disabled/>
+								</div>
+
+							</div>
+							<div class="input-group" style="margin-top: 10px;">
+
+								<label class="control-label col-sm-4 col-md-4 col-xs-12">身份证号</label>
+								<div class="col-sm-8 col-md-8 col-xs-12">
+									<input class="form-control" style="width: 200px;" id="disabledInput" type="text" value="11111111111" disabled/>
+								</div>
+
+							</div>
+							<div class="input-group" style="margin-top: 10px;margin-left: 14px;">
+								<label class="control-label col-sm-4 col-md-4 col-xs-12">手&nbsp;机&nbsp;号</label>
+								<div class="col-sm-5 col-md-5 col-xs-9">
+									<input class="form-control" id="disabledInput" type="text" value="17798531336" disabled/>
+								</div>
+
+								<button type="button" id="btn_send" onclick="sendMessage()" class="col-md-3 col-xs-3 col-sm-3 btn btn-danger">
+							 发送短信
+							</button>
+
+							</div>
+							<div class="input-group" style="margin-top: 10px; margin-bottom: 10px;">
+
+								<label class="control-label col-sm-4 col-md-4 col-xs-12">验&nbsp;证&nbsp;码</label>
+								<div class="col-sm-8 col-md-8 col-xs-12">
+									<input class="form-control" type="text" style="width: 200px;" placeholder="请输入收到的验证码" name="activeCheckCode" />
+								</div>
+
+							</div>
+							<div class="input-group col-sm-offset-3 col-md-offset-3 col-xs-offset-3">
+								<input type="submit" class="btn btn-info" style="width:100px;margin-bottom: 10px;" value="提交" />
+							</div>
+						</form>
+					</div>
+					<!--form内部row END-->
+				</div>
+				<!--form DIV END-->
+			</div>
+			<!--row END-->
+		</div>
+		<!--containerEND-->
+		<div class="container" style="margin-top:140px;">
+			<div class="row">
+				<div class="" style="text-align: center;">
+					Copyright &copy; 2017-2018 南京信息工程大学滨江学院-计算机系-软件工程3班-邹仝 版权所有
+				</div>
+			</div>
+		</div>
+		<script>
+			function sendMessage() {
+				var btn_send = document.getElementById("btn_send");
+				var time = 60;
+				var timer = setInterval(function() {
+					btn_send.disabled = true;
+					btn_send.innerText = time + '秒后再发';
+					if (time == 0) {
+						btn_send.innerText = '发送短信';
+						btn_send.disabled = false;
+						clearInterval(timer);
+					}
+					time--;
+				}, 1000);
+			}
+		</script>
+	</body>
+
+</html>

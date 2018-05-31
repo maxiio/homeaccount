@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="User" table="t_user">
+		<id name="user_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="user_name"></property>
+		<property name="user_password"></property>
+		<property name="idcard" ></property>
+		<property name="province" ></property>
+		<property name="city" ></property>
+		<property name="details" length="200"></property>
+		<property name="birthday"></property>
+		<property name="realname" ></property>
+		<property name="user_phone" ></property>
+		<property name="user_sex"></property>
+		<property name="email" ></property>
+		<property name="address" ></property>
+		<property name="question"></property>
+		<property name="answer" ></property>
+		<property name="register_date"></property>
+		<property name="face" ></property>
+		<property name="score"></property>
+		<property name="state"></property>
+		<property name="activecode" ></property>
+		<property name="activestate"></property>
+		<property name="level"></property>
+		<property name="loginDate"></property>
+		<set name="inaccounts" inverse="true">
+			<key column="in_user_id"></key>
+			<one-to-many class="InAccount"/>
+		</set>
+		<set name="outaccounts" inverse="true">
+			<key column="out_user_id"></key>
+			<one-to-many class="OutAccount"/>
+		</set>
+		<set name="inaccounttypes" inverse="true">
+			<key column="it_user_id"></key>
+			<one-to-many class="InAccountType"/>
+		</set>
+		<set name="outaccounttypes" inverse="true">
+			<key column="ot_user_id"></key>
+			<one-to-many class="OutAccountType"/>
+		</set>
+		<set name="invests" inverse="true">
+			<key column="invest_user_id"></key>
+			<one-to-many class="Invest"/>
+		</set>
+		<set name="loans" inverse="true">
+			<key column="loan_user_id"></key>
+			<one-to-many class="Loan"/>
+		</set>
+		<set name="topics" inverse="true">
+			<key column="topic_user_id"></key>
+			<one-to-many class="Topic"/>
+		</set>
+		<set name="replys" inverse="true">
+			<key column="reply_user_id"></key>
+			<one-to-many class="Reply"/>
+		</set>
+	</class>
+	<query name="user.update">
+		UPDATE  User SET user_password=?  where user_id=?
+	</query>
+	<query name="user.stop">
+		UPDATE User SET state=1  where user_id=?
+	</query>
+	<query name="user.open">
+		UPDATE User SET state=0  where user_id=?
+	</query>
+	<query name="user.editlevel">
+		UPDATE User SET level=?  where user_id=?
+	</query>
+</hibernate-mapping>

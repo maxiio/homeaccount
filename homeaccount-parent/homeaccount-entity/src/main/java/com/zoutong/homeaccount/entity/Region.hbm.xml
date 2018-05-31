@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="Region" table="t_region">
+		<id name="region_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="region_name" length="20"></property>
+		<property name="region_desc" length="150"></property>
+		<set name="topics" inverse="true">
+			<key column="topic_region_id"></key>
+			<one-to-many class="Topic"/>
+		</set>
+	</class>
+	<query name="region.delete">
+		DELETE FROM Region WHERE region_id=?
+	</query>
+</hibernate-mapping>

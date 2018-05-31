@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="InAccountType" table="t_inaccounttype">
+		<id name="inaccounttype_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="inaccounttype_name" length="20"></property>
+		<property name="inaccounttype_createtime"></property>
+		<property name="inaccounttype_desc" length="150"></property>
+		<many-to-one name="user" column="it_user_id" class="User" cascade="save-update" lazy="false"></many-to-one>
+		<set name="inaccounts" inverse="true">
+			<key column="in_type_id"></key>
+			<one-to-many class="InAccount"/>
+		</set>
+	</class>
+	<query name="inaccounttype.delete">
+		DELETE FROM InAccountType WHERE inaccounttype_id=?
+	</query>
+</hibernate-mapping>

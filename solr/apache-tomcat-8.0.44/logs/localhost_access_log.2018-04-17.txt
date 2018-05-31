@@ -1,0 +1,17 @@
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 41
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:53 +0800] "POST /solr/collection1/update?wt=javabin&version=2 HTTP/1.1" 200 40
+127.0.0.1 - - [17/Apr/2018:00:07:54 +0800] "POST /solr/collection1/update HTTP/1.1" 200 41

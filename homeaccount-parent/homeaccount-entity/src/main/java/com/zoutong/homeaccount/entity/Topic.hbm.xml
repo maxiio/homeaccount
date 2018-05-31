@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.zoutong.homeaccount.entity">
+	<class name="Topic" table="t_topic">
+		<id name="topic_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="topic_title" length="100"></property>
+		<property name="topic_content" type="java.lang.String">
+			<column name="topic_content" sql-type="text"  length="1000"></column>
+		</property>
+		<property name="topic_datetime"></property>
+		<property name="is_top"></property>
+		<property name="is_good"></property>
+		<property name="is_end"></property>
+	    <property name="look_count"></property>
+	     <property name="topic_zan"></property>
+	     <property name="topic_bad"></property>
+	      <property name="del"></property>
+	    <many-to-one name="user" column="topic_user_id" class="User" lazy="false" cascade="save-update"></many-to-one>
+		<many-to-one name="region" column="topic_region_id" class="Region" lazy="false" cascade="save-update"></many-to-one>
+		<set name="replys"  inverse="true">
+			<key column="reply_topic_id"></key>
+			<one-to-many class="Reply"/>
+		</set>
+	</class>
+	<query name="topic.delete">
+		UPDATE Topic SET del='1' WHERE topic_id=?
+	</query>
+	<query name="topic.update">
+		UPDATE Topic SET topic_title=?,topic_content=?,region.region_id=? WHERE topic_id=?
+	</query>
+	<query name="topic.zan">
+		UPDATE Topic SET topic_zan=topic_zan+1 WHERE topic_id=?
+	</query>
+	<query name="topic.bad">
+		UPDATE Topic SET topic_bad=topic_bad+1 WHERE topic_id=?
+	</query>
+	<query name="topic.end">
+		UPDATE Topic SET is_end='1' WHERE topic_id=?
+	</query>
+	<query name="topic.top">
+		UPDATE Topic SET is_top='1' WHERE topic_id=?
+	</query>
+	<query name="topic.good">
+		UPDATE Topic SET is_good='1' WHERE topic_id=?
+	</query>
+	<query name="topic.notop">
+		UPDATE Topic SET is_top='0' WHERE topic_id=?
+	</query>
+	<query name="topic.nogood">
+		UPDATE Topic SET is_good='0' WHERE topic_id=?
+	</query>
+	<query name="topic.nodelete">
+		UPDATE Topic SET del='0' WHERE topic_id=?
+	</query>
+	<query name="topic.unend">
+		UPDATE Topic SET is_end='0' WHERE topic_id=?
+	</query>
+	<query name="topic.confirm">
+		UPDATE Topic SET topic_bad=0 WHERE topic_id=?
+	</query>
+</hibernate-mapping>
