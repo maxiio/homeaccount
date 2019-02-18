@@ -19,6 +19,4 @@
    [github地址](https://github.com/jianghuxiaoao/homeaccount)  
    
    >在Mysql中创建数据库：account  
-   >在eclipse中导入下载的项目  
-   
- <font color=#FF0000>111</font>
+   >在eclipse中导入下载的项目 
