@@ -19,4 +19,21 @@
    [github地址](https://github.com/jianghuxiaoao/homeaccount)  
    
    >  在Mysql中创建数据库：account  
-   >  在eclipse中导入下载的项目 
+   
+使用Sqlyog连接mysql服务，并新建库命名为：account
+   
+   >  在eclipse中导入下载的项目  
+   
+ 直接在eclipse中打开maven项目找到此项目打开即可**可能需要等待一会maven的下载**
+ 
+   >  Solr是一个企业级的搜索服务，这里只介绍运行与访问  
+   
+ github下载下来的项目中有solr的服务，直接放到tomcat中运行即可
+ 
+   >  在eclipse中使用直接运行项目
+   
+   这里面有一点需要注意的是：最好不要使用maven命令运行此项目，因为上传文件使用到了tomcat的虚拟路径 ，虚拟请求地址为：/upload
+   本系统采用了Shiro提供的MD5加密算法对密码进行加密，但密码可以通过注册时的邮件重置
+   
+   ****
+   - 搭建过程中有任何问题email到：javazt@126.com
