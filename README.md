@@ -35,7 +35,7 @@
   10.  高亮显示的分词搜索引擎
   ![搜索](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/search_engine.png)
   
-  ###后台管理员界面一览
+  ###  后台管理员界面一览
   1. 管理员登录界面
   ![登录界面](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/admin_login.png)
   
