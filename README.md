@@ -4,7 +4,7 @@
 ##  项目介绍
   此项目为毕业设计时做的，功能也还算是比较多的，知识点也很齐全，值得一看  
   
-  ###用户界面一览
+  ###  用户界面一览
   1.  登录界面  
   ![用户登录界面](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/user_login.png)
     
