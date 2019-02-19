@@ -1,12 +1,65 @@
 
 #  homeaccount
 家庭记账系统（ssh+shiro+solr）
- ##  项目介绍
+##  项目介绍
   此项目为毕业设计时做的，功能也还算是比较多的，知识点也很齐全，值得一看  
   
   ###用户界面一览
   1.  登录界面  
   ![用户登录界面](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/user_login.png)
+    
+  2.  用户主界面
+    ![用户主界面](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/user_main.png)
+  
+  3.  账单列表
+   ![用户账单列表](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/account_list.png)
+  
+  4.  添加账单
+   ![用户添加账单](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/account_add.png)
+   
+  5.  账单统计图
+  ![用户账单统计](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/account_report.png)
+  
+  6.  交流区
+  ![用户交流区](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/chat_area.png)
+  
+  7.  主题帖列表
+  ![主题帖列表](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/topic_list.png)
+  
+  8.  主题帖详情
+  ![主题帖详情](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/topic_detail.png)
+  
+  9.  主题帖回复
+  ![主题帖回复](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/topic_reply.png)
+  
+  10.  高亮显示的分词搜索引擎
+  ![搜索](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/search_engine.png)
+  
+  ###后台管理员界面一览
+  1. 管理员登录界面
+  ![登录界面](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/admin_login.png)
+  
+  2. 管理员主界面
+  ![管理员主界面](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/admin_index.png)
+     
+  3.  用户列表
+  ![用户列表](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/admin_user_list.png)
+  
+  4.  主题帖列表
+  ![主题帖](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/admin_topic_list.png)
+  
+  5.  权限列表
+  ![权限列表](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/admin_permission_list.png)
+  
+  6.  角色列表
+  ![角色列表](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/admin_rolr_list.png)
+  
+  7.  修改角色
+  ![修改角色](https://github.com/jianghuxiaoao/homeaccount/blob/master/githubimg/admin_rolr_edit.png)
+  
+ 以上为系统关键功能界面
+  ****
+  
 ##  搭建系统步骤
   >  需要准备  
   
